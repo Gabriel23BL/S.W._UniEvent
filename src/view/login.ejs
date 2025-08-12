@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniEvent - Iniciar sesión</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/formularios.css">
+</head>
+<body>
+  <section class="app-section login-section">
+    <div class="login-container d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="login-box">
+              <div class="text-center mb-4">
+                <h1 class="h3 mb-3 fw-bold">UniEvent</h1>
+                <p class="text-muted">Tu portal de cursos y actividades</p>
+              </div>
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="correo" class="form-label">Correo electrónico</label>
+                  <input type="email" class="form-control" id="correo" required>
+                </div>
+                <div class="mb-3">
+                  <label for="clave" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="clave" required>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="rememberMe">
+                  <label class="form-check-label" for="rememberMe">Recordarme</label>
+                </div>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+                </div>
+                <div class="text-center mt-3">
+                  <a href="#" class="text-decoration-none small">¿Olvidaste tu contraseña?</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

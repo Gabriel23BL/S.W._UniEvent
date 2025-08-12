@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <!-- Main App Section -->
+  <section class="app-section" id="mainSection">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-2 col-md-3 px-0">
+          <div class="sidebar d-flex flex-column">
+            <div class="sidebar-logo">
+              <h3 class="text-white mb-0">UniEvent</h3>
+            </div>
+            
+            <ul class="nav flex-column mt-3">
+              <li class="nav-item">
+                <a class="nav-link active" href="javascript:void(0)" data-section="dashboardSection">
+                  <i class="fas fa-home"></i> Inicio
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)" data-section="eventsSection">
+                  <i class="fas fa-calendar-alt"></i> Eventos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)" data-section="calendarSection">
+                  <i class="fas fa-calendar-week"></i> Calendario
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)" data-section="myEventsSection">
+                  <i class="fas fa-star"></i> Mis eventos
+                </a>
+              </li>
+              <li class="nav-item" id="adminNavItem" style="display: none;">
+                <a class="nav-link" href="javascript:void(0)" data-section="statsSection">
+                  <i class="fas fa-chart-bar"></i> Estadísticas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)" data-section="profileSection">
+                  <i class="fas fa-user"></i> Mi perfil
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)" data-section="settingsSection">
+                  <i class="fas fa-cog"></i> Configuración
+                </a>
+              </li>
+            </ul>
+            
+            <div class="sidebar-footer mt-auto">
+              <a href="javascript:void(0)" class="btn btn-outline-light btn-sm w-100" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="col-lg-10 col-md-9 p-4">
+          <!-- Dashboard Section -->
+          <div class="section-content" id="dashboardSection">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2>Inicio</h2>
+              <div>
+                <span class="badge bg-primary" id="userRoleBadge">Estudiante</span>
+                <a href="javascript:void(0)" class="ms-2" id="navbarUserName"></a>
+              </div>
+            </div>
+            
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h4>Próximos eventos</h4>
+                <div class="alert alert-info">
+                  <i class="fas fa-info-circle me-2"></i>
+                  Bienvenido a UniEvent, aquí encontrarás todos los eventos disponibles para ti.
+                </div>
+                
+                <div class="upcoming-events" id="upcomingEventsList">
+                  <!-- Upcoming events will be loaded here -->
+                  <div class="card mb-3">
+                    <div class="card-body d-flex align-items-center">
+                      <div class="flex-shrink-0 me-3 text-center">
+                        <h3 class="mb-0">15</h3>
+                        <small>Jun</small>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h5 class="card-title mb-1">Taller de Programación Web</h5>
+                        <p class="card-text text-muted mb-1"><small><i class="fas fa-clock me-1"></i> 15:00 - 18:00</small></p>
+                        <p class="card-text text-muted"><small><i class="fas fa-map-marker-alt me-1"></i> Aula 305</small></p>
+                      </div>
+                      <div class="ms-auto">
+                        <button class="btn btn-outline-primary btn-sm">Ver detalles</button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card mb-3">
+                    <div class="card-body d-flex align-items-center">
+                      <div class="flex-shrink-0 me-3 text-center">
+                        <h3 class="mb-0">18</h3>
+                        <small>Jun</small>
+                      </div>
+                      <div class="flex-grow-1">
+                        <h5 class="card-title mb-1">Conferencia: Inteligencia Artificial</h5>
+                        <p class="card-text text-muted mb-1"><small><i class="fas fa-clock me-1"></i> 10:00 - 12:30</small></p>
+                        <p class="card-text text-muted"><small><i class="fas fa-map-marker-alt me-1"></i> Auditorio Principal</small></p>
+                      </div>
+                      <div class="ms-auto">
+                        <button class="btn btn-outline-primary btn-sm">Ver detalles</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <h4>Mi calendario</h4>
+                <div class="card">
+                  <div class="card-body">
+                    <div id="miniCalendar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Eventos destacados</h5>
+                    <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" data-section="eventsSection">Ver todos</a>
+                  </div>
+                  <div class="card-body">
+                    <div class="row" id="featuredEventsList">
+                      <!-- Featured events will be loaded here -->
+                      <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card event-card h-100">
+                          <img src="https://cdn.pixabay.com/photo/2018/03/27/12/16/analytics-3265840_1280.jpg" class="card-img-top" alt="Evento">
+                          <span class="card-category bg-primary text-white">Tecnología</span>
+                          <div class="card-body">
+                            <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 25 Jun, 2025</span>
+                            <h5 class="card-title">Workshop de Ciencia de Datos</h5>
+                            <p class="card-text">Aprende las bases del análisis de datos y machine learning en este taller práctico.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <button class="btn btn-outline-primary">Ver más</button>
+                              <span class="badge bg-success">Cupos disponibles</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card event-card h-100">
+                          <img src="https://cdn.pixabay.com/photo/2017/07/31/11/44/laptop-2557577_1280.jpg" class="card-img-top" alt="Evento">
+                          <span class="card-category bg-info text-white">Diseño</span>
+                          <div class="card-body">
+                            <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 30 Jun, 2025</span>
+                            <h5 class="card-title">Masterclass de UX/UI Design</h5>
+                            <p class="card-text">Descubre las últimas tendencias en diseño de interfaces y experiencia de usuario.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <button class="btn btn-outline-primary">Ver más</button>
+                              <span class="badge bg-warning">Pocos cupos</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card event-card h-100">
+                          <img src="https://cdn.pixabay.com/photo/2017/03/25/17/55/colorful-2174045_1280.jpg" class="card-img-top" alt="Evento">
+                          <span class="card-category bg-danger text-white">Arte</span>
+                          <div class="card-body">
+                            <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 2 Jul, 2025</span>
+                            <h5 class="card-title">Exposición de Arte Digital</h5>
+                            <p class="card-text">Visita esta exposición donde el arte se encuentra con la tecnología.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                              <button class="btn btn-outline-primary">Ver más</button>
+                              <span class="badge bg-success">Entrada libre</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Events Section -->
+          <div class="section-content" id="eventsSection" style="display: none;">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2>Eventos</h2>
+              <button class="btn btn-primary" id="createEventBtn" style="display: none;">
+                <i class="fas fa-plus me-2"></i>Crear nuevo evento
+              </button>
+            </div>
+            
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row g-3">
+                  <div class="col-md-3">
+                    <input type="text" class="form-control" id="searchEvent" placeholder="Buscar eventos...">
+                  </div>
+                  <div class="col-md-3">
+                    <select class="form-select" id="categoryFilter">
+                      <option value="">Todas las categorías</option>
+                      <option value="tech">Tecnología</option>
+                      <option value="art">Arte y Cultura</option>
+                      <option value="science">Ciencia</option>
+                      <option value="business">Negocios</option>
+                      <option value="health">Salud</option>
+                      <option value="education">Educación</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <select class="form-select" id="dateFilter">
+                      <option value="">Cualquier fecha</option>
+                      <option value="today">Hoy</option>
+                      <option value="week">Esta semana</option>
+                      <option value="month">Este mes</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="btn-group w-100 view-toggle" role="group">
+                      <input type="radio" class="btn-check" name="viewMode" id="listView" checked>
+                      <label class="btn btn-outline-primary" for="listView"><i class="fas fa-list"></i></label>
+                      
+                      <input type="radio" class="btn-check" name="viewMode" id="gridView">
+                      <label class="btn btn-outline-primary" for="gridView"><i class="fas fa-th-large"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Grid View -->
+            <div id="eventsGridView">
+              <div class="row" id="eventsList">
+                <!-- Events will be loaded here -->
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card event-card h-100">
+                    <img src="https://cdn.pixabay.com/photo/2018/05/04/10/30/team-3373638_1280.jpg" class="card-img-top" alt="Evento">
+                    <span class="card-category bg-primary text-white">Educación</span>
+                    <div class="card-body">
+                      <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 18 Jul, 2025</span>
+                      <h5 class="card-title">Seminario de Investigación Académica</h5>
+                      <p class="card-text">Aprende metodologías de investigación para tu trabajo académico.</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary">Ver más</button>
+                        <span class="badge bg-success">Cupos disponibles</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card event-card h-100">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/23/14/29/coding-1853305_1280.jpg" class="card-img-top" alt="Evento">
+                    <span class="card-category bg-info text-white">Tecnología</span>
+                    <div class="card-body">
+                      <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 22 Jul, 2025</span>
+                      <h5 class="card-title">Hackathon UniDev 2025</h5>
+                      <p class="card-text">48 horas de programación intensiva para desarrollar soluciones innovadoras.</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary">Ver más</button>
+                        <span class="badge bg-warning">Pocos cupos</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card event-card h-100">
+                    <img src="https://cdn.pixabay.com/photo/2017/10/17/19/11/fantasy-2861815_1280.jpg" class="card-img-top" alt="Evento">
+                    <span class="card-category bg-danger text-white">Arte</span>
+                    <div class="card-body">
+                      <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 25 Jul, 2025</span>
+                      <h5 class="card-title">Concurso de Fotografía</h5>
+                      <p class="card-text">Muestra tu talento fotográfico y gana increíbles premios.</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary">Ver más</button>
+                        <span class="badge bg-success">Inscripción abierta</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card event-card h-100">
+                    <img src="https://cdn.pixabay.com/photo/2018/08/10/15/43/science-3597125_1280.jpg" class="card-img-top" alt="Evento">
+                    <span class="card-category bg-success text-white">Ciencia</span>
+                    <div class="card-body">
+                      <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 29 Jul, 2025</span>
+                      <h5 class="card-title">Feria de Ciencias 2025</h5>
+                      <p class="card-text">Explora los proyectos científicos de estudiantes e investigadores.</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary">Ver más</button>
+                        <span class="badge bg-success">Entrada libre</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card event-card h-100">
+                    <img src="https://cdn.pixabay.com/photo/2015/07/31/11/45/library-869061_1280.jpg" class="card-img-top" alt="Evento">
+                    <span class="card-category bg-warning text-dark">Literatura</span>
+                    <div class="card-body">
+                      <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 5 Ago, 2025</span>
+                      <h5 class="card-title">Club de Lectura</h5>
+                      <p class="card-text">Únete a la discusión sobre las obras literarias contemporáneas.</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary">Ver más</button>
+                        <span class="badge bg-success">Cupos disponibles</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card event-card h-100">
+                    <img src="https://cdn.pixabay.com/photo/2015/01/08/18/11/laptops-593673_1280.jpg" class="card-img-top" alt="Evento">
+                    <span class="card-category bg-secondary text-white">Negocios</span>
+                    <div class="card-body">
+                      <span class="event-date"><i class="far fa-calendar-alt me-1"></i> 12 Ago, 2025</span>
+                      <h5 class="card-title">Foro de Emprendimiento</h5>
+                      <p class="card-text">Conecta con emprendedores y conoce estrategias de negocios efectivas.</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <button class="btn btn-outline-primary">Ver más</button>
+                        <span class="badge bg-danger">Cupo lleno</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <nav aria-label="Paginación de eventos">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="javascript:void(0)" tabindex="-1">Anterior</a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0)">Siguiente</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            
+            <!-- List View -->
+            <div id="eventsListView" style="display: none;">
+              <div class="card">
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Título</th>
+                          <th scope="col">Categoría</th>
+                          <th scope="col">Organizador</th>
+                          <th scope="col">Cupos</th>
+                          <th scope="col">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>18 Jul, 2025</td>
+                          <td>Seminario de Investigación Académica</td>
+                          <td><span class="badge bg-primary">Educación</span></td>
+                          <td>Facultad de Humanidades</td>
+                          <td><span class="badge bg-success">Disponible</span></td>
+                          <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>22 Jul, 2025</td>
+                          <td>Hackathon UniDev 2025</td>
+                          <td><span class="badge bg-info">Tecnología</span></td>
+                          <td>Departamento de Informática</td>
+                          <td><span class="badge bg-warning">Pocos cupos</span></td>
+                          <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>25 Jul, 2025</td>
+                          <td>Concurso de Fotografía</td>
+                          <td><span class="badge bg-danger">Arte</span></td>
+                          <td>Club de Fotografía</td>
+                          <td><span class="badge bg-success">Disponible</span></td>
+                          <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>29 Jul, 2025</td>
+                          <td>Feria de Ciencias 2025</td>
+                          <td><span class="badge bg-success">Ciencia</span></td>
+                          <td>Facultad de Ciencias</td>
+                          <td><span class="badge bg-success">Entrada libre</span></td>
+                          <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>5 Ago, 2025</td>
+                          <td>Club de Lectura</td>
+                          <td><span class="badge bg-warning text-dark">Literatura</span></td>
+                          <td>Biblioteca Central</td>
+                          <td><span class="badge bg-success">Disponible</span></td>
+                          <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>12 Ago, 2025</td>
+                          <td>Foro de Emprendimiento</td>
+                          <td><span class="badge bg-secondary">Negocios</span></td>
+                          <td>Facultad de Economía</td>
+                          <td><span class="badge bg-danger">Cupo lleno</span></td>
+                          <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+              <nav aria-label="Paginación de eventos" class="mt-4">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="javascript:void(0)" tabindex="-1">Anterior</a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                  <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="javascript:void(0)">Siguiente</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          
+          <!-- Calendar Section -->
+          <div class="section-content" id="calendarSection" style="display: none;">
+            <h2 class="mb-4">Calendario académico</h2>
+            
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-3 mb-3 mb-md-0">
+                    <select class="form-select" id="calendarView">
+                      <option value="month">Vista mensual</option>
+                      <option value="week">Vista semanal</option>
+                      <option value="day">Vista diaria</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+                    <button class="btn btn-outline-secondary me-2" id="prevBtn">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h5 class="mb-0" id="currentPeriod">Junio 2025</h5>
+                    <button class="btn btn-outline-secondary ms-2" id="nextBtn">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                  <div class="col-md-3 d-flex justify-content-md-end">
+                    <button class="btn btn-outline-primary" id="todayBtn">Hoy</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card">
+              <div class="card-body">
+                <div id="calendar"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- My Events Section -->
+          <div class="section-content" id="myEventsSection" style="display: none;">
+            <h2 class="mb-4">Mis eventos</h2>
+            
+            <ul class="nav nav-tabs mb-4" id="myEventsTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="registered-tab" data-bs-toggle="tab" data-bs-target="#registered-tab-pane" type="button" role="tab">Inscrito</button>
+              </li>
+              <li class="nav-item organizer-only" role="presentation" style="display: none;">
+                <button class="nav-link" id="created-tab" data-bs-toggle="tab" data-bs-target="#created-tab-pane" type="button" role="tab">Organizados</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past-tab-pane" type="button" role="tab">Pasados</button>
+              </li>
+            </ul>
+            
+            <div class="tab-content" id="myEventsTabContent">
+              <!-- Registered Events Tab -->
+              <div class="tab-pane fade show active" id="registered-tab-pane" role="tabpanel" aria-labelledby="registered-tab" tabindex="0">
+                <div class="row" id="registeredEventsList">
+                  <div class="col-lg-6 mb-4">
+                    <div class="card">
+                      <div class="card-body d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="bg-primary text-white p-3 text-center rounded">
+                            <h3 class="mb-0">22</h3>
+                            <small>Jul</small>
+                          </div>
+                        </div>
+                        <div class="flex-grow-1">
+                          <h5 class="card-title">Hackathon UniDev 2025</h5>
+                          <p class="card-text text-muted mb-1"><small><i class="fas fa-clock me-1"></i> 09:00 - 21:00</small></p>
+                          <p class="card-text text-muted mb-3"><small><i class="fas fa-map-marker-alt me-1"></i> Laboratorio de Informática</small></p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-danger btn-sm">Cancelar inscripción</button>
+                            <span class="badge bg-info">Inscrito</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-6 mb-4">
+                    <div class="card">
+                      <div class="card-body d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="bg-success text-white p-3 text-center rounded">
+                            <h3 class="mb-0">25</h3>
+                            <small>Jul</small>
+                          </div>
+                        </div>
+                        <div class="flex-grow-1">
+                          <h5 class="card-title">Concurso de Fotografía</h5>
+                          <p class="card-text text-muted mb-1"><small><i class="fas fa-clock me-1"></i> 14:00 - 18:00</small></p>
+                          <p class="card-text text-muted mb-3"><small><i class="fas fa-map-marker-alt me-1"></i> Galería de Arte</small></p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-danger btn-sm">Cancelar inscripción</button>
+                            <span class="badge bg-info">Inscrito</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="alert alert-info" id="noRegisteredEvents" style="display: none;">
+                  <p class="mb-0">No te has inscrito a ningún evento todavía.</p>
+                </div>
+              </div>
+              
+              <!-- Created Events Tab (for organizers) -->
+              <div class="tab-pane fade" id="created-tab-pane" role="tabpanel" aria-labelledby="created-tab" tabindex="0">
+                <div class="mb-4">
+                  <button class="btn btn-primary" id="createEventBtnTab">
+                    <i class="fas fa-plus me-2"></i>Crear nuevo evento
+                  </button>
+                </div>
+                
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead class="table-light">
+                      <tr>
+                        <th scope="col">Título</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Inscritos</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody id="createdEventsList">
+                      <tr>
+                        <td>Taller de Programación Web</td>
+                        <td>15 Jun, 2025</td>
+                        <td>15/30</td>
+                        <td><span class="badge bg-success">Publicado</span></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-primary">Editar</button>
+                            <button class="btn btn-outline-info">Ver inscritos</button>
+                            <button class="btn btn-outline-danger">Cancelar</button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Conferencia: Inteligencia Artificial</td>
+                        <td>18 Jun, 2025</td>
+                        <td>42/100</td>
+                        <td><span class="badge bg-success">Publicado</span></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-primary">Editar</button>
+                            <button class="btn btn-outline-info">Ver inscritos</button>
+                            <button class="btn btn-outline-danger">Cancelar</button>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Curso de Excel Avanzado</td>
+                        <td>10 Jul, 2025</td>
+                        <td>8/20</td>
+                        <td><span class="badge bg-warning text-dark">Borrador</span></td>
+                        <td>
+                          <div class="btn-group btn-group-sm">
+                            <button class="btn btn-outline-primary">Editar</button>
+                            <button class="btn btn-outline-success">Publicar</button>
+                            <button class="btn btn-outline-danger">Eliminar</button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <div class="alert alert-info" id="noCreatedEvents" style="display: none;">
+                  <p class="mb-0">No has creado ningún evento todavía.</p>
+                </div>
+              </div>
+              
+              <!-- Past Events Tab -->
+              <div class="tab-pane fade" id="past-tab-pane" role="tabpanel" aria-labelledby="past-tab" tabindex="0">
+                <div class="row" id="pastEventsList">
+                  <div class="col-lg-6 mb-4">
+                    <div class="card">
+                      <div class="card-body d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="bg-secondary text-white p-3 text-center rounded">
+                            <h3 class="mb-0">5</h3>
+                            <small>May</small>
+                          </div>
+                        </div>
+                        <div class="flex-grow-1">
+                          <h5 class="card-title">Workshop de Desarrollo Mobile</h5>
+                          <p class="card-text text-muted mb-1"><small><i class="fas fa-clock me-1"></i> 10:00 - 17:00</small></p>
+                          <p class="card-text text-muted mb-3"><small><i class="fas fa-map-marker-alt me-1"></i> Aula 201</small></p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-secondary btn-sm">Ver certificado</button>
+                            <span class="badge bg-secondary">Finalizado</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-lg-6 mb-4">
+                    <div class="card">
+                      <div class="card-body d-flex">
+                        <div class="flex-shrink-0 me-3">
+                          <div class="bg-secondary text-white p-3 text-center rounded">
+                            <h3 class="mb-0">12</h3>
+                            <small>Abr</small>
+                          </div>
+                        </div>
+                        <div class="flex-grow-1">
+                          <h5 class="card-title">Charla: Blockchain y Criptomonedas</h5>
+                          <p class="card-text text-muted mb-1"><small><i class="fas fa-clock me-1"></i> 15:00 - 17:30</small></p>
+                          <p class="card-text text-muted mb-3"><small><i class="fas fa-map-marker-alt me-1"></i> Auditorio B</small></p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-outline-secondary btn-sm">Ver certificado</button>
+                            <span class="badge bg-secondary">Finalizado</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="alert alert-info" id="noPastEvents" style="display: none;">
+                  <p class="mb-0">No tienes eventos pasados.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Stats Section (for organizers) -->
+          <div class="section-content" id="statsSection" style="display: none;">
+            <h2 class="mb-4">Estadísticas de eventos</h2>
+            
+            <div class="row mb-4">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="dashboard-stat d-flex align-items-center">
+                  <i class="fas fa-calendar-check"></i>
+                  <div>
+                    <h3>12</h3>
+                    <p>Eventos creados</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="dashboard-stat d-flex align-items-center">
+                  <i class="fas fa-users"></i>
+                  <div>
+                    <h3>245</h3>
+                    <p>Total inscritos</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="dashboard-stat d-flex align-items-center">
+                  <i class="fas fa-chart-line"></i>
+                  <div>
+                    <h3>87%</h3>
+                    <p>Tasa asistencia</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="dashboard-stat d-flex align-items-center">
+                  <i class="fas fa-star"></i>
+                  <div>
+                    <h3>4.7</h3>
+                    <p>Puntuación promedio</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row mb-4">
+              <div class="col-lg-8 mb-4">
+                <div class="card h-100">
+                  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Participación por evento</h5>
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-outline-secondary active">Mes</button>
+                      <button class="btn btn-outline-secondary">Trimestre</button>
+                      <button class="btn btn-outline-secondary">Año</button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="participationChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                  <div class="card-header bg-white">
+                    <h5 class="mb-0">Distribución por categoría</h5>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="categoryChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Desempeño de eventos recientes</h5>
+                    <div>
+                      <button class="btn btn-sm btn-outline-primary" id="downloadCSV">
+                        <i class="fas fa-file-csv me-1"></i> Exportar CSV
+                      </button>
+                      <button class="btn btn-sm btn-outline-danger" id="downloadPDF">
+                        <i class="fas fa-file-pdf me-1"></i> Exportar PDF
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead class="table-light">
+                          <tr>
+                            <th scope="col">Título evento</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Inscritos</th>
+                            <th scope="col">Asistencia</th>
+                            <th scope="col">Calificación</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Taller de Programación Web</td>
+                            <td>15 Jun, 2025</td>
+                            <td>15/30 (50%)</td>
+                            <td>12/15 (80%)</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="me-2">4.8</div>
+                                <div class="text-warning">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star-half-alt"></i>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Conferencia: Inteligencia Artificial</td>
+                            <td>18 Jun, 2025</td>
+                            <td>42/100 (42%)</td>
+                            <td>38/42 (90%)</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="me-2">4.5</div>
+                                <div class="text-warning">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star-half-alt"></i>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Workshop de Desarrollo Mobile</td>
+                            <td>5 May, 2025</td>
+                            <td>25/25 (100%)</td>
+                            <td>22/25 (88%)</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="me-2">4.9</div>
+                                <div class="text-warning">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Charla: Blockchain y Criptomonedas</td>
+                            <td>12 Abr, 2025</td>
+                            <td>35/50 (70%)</td>
+                            <td>30/35 (86%)</td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <div class="me-2">4.6</div>
+                                <div class="text-warning">
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star"></i>
+                                  <i class="fas fa-star-half-alt"></i>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Profile Section -->
+          <div class="section-content" id="profileSection" style="display: none;">
+            <div class="profile-header">
+              <div class="container">
+                <div class="row align-items-center">
+                  <div class="col-lg-2 col-md-3 text-center mb-4 mb-md-0">
+                    <div class="avatar-upload">
+                      <div class="avatar-edit">
+                        <input type="file" id="imageUpload" accept="image/*" />
+                        <label for="imageUpload"><i class="fas fa-camera"></i></label>
+                      </div>
+                      <div class="avatar-preview">
+                        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="profile-img" id="profileImage" alt="Foto de perfil">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-10 col-md-9">
+                    <h2 id="profileName">Nombre del Usuario</h2>
+                    <p class="mb-0" id="profileEmail">usuario@ejemplo.com</p>
+                    <span class="badge bg-primary" id="profileRole">Estudiante</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="card mb-4">
+                    <div class="card-header bg-white">
+                      <h5 class="mb-0">Información personal</h5>
+                    </div>
+                    <div class="card-body">
+                      <form id="profileForm">
+                        <div class="mb-3">
+                          <label for="fullName" class="form-label">Nombre completo</label>
+                          <input type="text" class="form-control" id="fullName" value="Nombre del Usuario">
+                        </div>
+                        <div class="mb-3">
+                          <label for="email" class="form-label">Correo electrónico</label>
+                          <input type="email" class="form-control" id="email" value="usuario@ejemplo.com" disabled>
+                        </div>
+                        <div class="mb-3">
+                          <label for="phone" class="form-label">Teléfono</label>
+                          <input type="tel" class="form-control" id="phone">
+                        </div>
+                        <div class="mb-3">
+                          <label for="faculty" class="form-label">Facultad / Departamento</label>
+                          <select class="form-select" id="faculty">
+                            <option value="">Seleccionar</option>
+                            <option value="cs">Ciencias</option>
+                            <option value="eng">Ingeniería</option>
+                            <option value="art">Artes y Humanidades</option>
+                            <option value="soc">Ciencias Sociales</option>
+                            <option value="med">Medicina</option>
+                            <option value="law">Derecho</option>
+                          </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="card mb-4">
+                    <div class="card-header bg-white">
+                      <h5 class="mb-0">Estadísticas de participación</h5>
+                    </div>
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between mb-3">
+                        <span>Eventos inscritos</span>
+                        <strong>12</strong>
+                      </div>
+                      <div class="d-flex justify-content-between mb-3">
+                        <span>Eventos asistidos</span>
+                        <strong>10</strong>
+                      </div>
+                      <div class="d-flex justify-content-between mb-3">
+                        <span>Certificados obtenidos</span>
+                        <strong>8</strong>
+                      </div>
+                      <div class="d-flex justify-content-between mb-3">
+                        <span>Eventos organizados</span>
+                        <strong>2</strong>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="card">
+                    <div class="card-header bg-white">
+                      <h5 class="mb-0">Cambiar contraseña</h5>
+                    </div>
+                    <div class="card-body">
+                      <form id="passwordForm">
+                        <div class="mb-3">
+                          <label for="currentPassword" class="form-label">Contraseña actual</label>
+                          <input type="password" class="form-control" id="currentPassword" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="newPassword" class="form-label">Nueva contraseña</label>
+                          <input type="password" class="form-control" id="newPassword" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+                          <input type="password" class="form-control" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Actualizar contraseña</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Settings Section -->
+          <div class="section-content" id="settingsSection" style="display: none;">
+            <h2 class="mb-4">Configuración</h2>
+            
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="card mb-4">
+                  <div class="card-header bg-white">
+                    <h5 class="mb-0">Preferencias de notificaciones</h5>
+                  </div>
+                  <div class="card-body">
+                    <form id="notificationsForm">
+                      <div class="mb-4">
+                        <h6>Notificaciones por correo electrónico</h6>
+                        <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="emailNewEvents" checked>
+                          <label class="form-check-label" for="emailNewEvents">Nuevos eventos relacionados</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="emailReminders" checked>
+                          <label class="form-check-label" for="emailReminders">Recordatorios de eventos</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="emailCancellations" checked>
+                          <label class="form-check-label" for="emailCancellations">Cancelaciones o cambios</label>
+                        </div>
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="emailNewsletters">
+                          <label class="form-check-label" for="emailNewsletters">Boletines informativos</label>
+                        </div>
+                      </div>
+                      
+                      <div class="mb-4">
+                        <h6>Notificaciones por SMS</h6>
+                        <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="smsReminders">
+                          <label class="form-check-label" for="smsReminders">Recordatorios de eventos</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="smsCancellations">
+                          <label class="form-check-label" for="smsCancellations">Cancelaciones o cambios urgentes</label>
+                        </div>
+                      </div>
+                      
+                      <button type="submit" class="btn btn-primary">Guardar preferencias</button>
+                    </form>
+                  </div>
+                </div>
+                
+                <div class="card mb-4">
+                  <div class="card-header bg-white">
+                    <h5 class="mb-0">Preferencias de visibilidad</h5>
+                  </div>
+                  <div class="card-body">
+                    <form id="privacyForm">
+                      <div class="mb-3">
+                        <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="showProfile" checked>
+                          <label class="form-check-label" for="showProfile">Mostrar mi perfil a otros usuarios</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="showEvents" checked>
+                          <label class="form-check-label" for="showEvents">Mostrar los eventos en los que participo</label>
+                        </div>
+                        <div class="form-check form-switch mb-2">
+                          <input class="form-check-input" type="checkbox" id="showContact">
+                          <label class="form-check-label" for="showContact">Mostrar información de contacto</label>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Guardar preferencias</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-lg-4">
+                <div class="card mb-4">
+                  <div class="card-header bg-white">
+                    <h5 class="mb-0">Categorías de interés</h5>
+                  </div>
+                  <div class="card-body">
+                    <form id="interestsForm">
+                      <div class="mb-3">
+                        <div class="form-check mb-2">
+                          <input class="form-check-input" type="checkbox" id="techInterest" checked>
+                          <label class="form-check-label" for="techInterest">Tecnología</label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input class="form-check-input" type="checkbox" id="artInterest" checked>
+                          <label class="form-check-label" for="artInterest">Arte y Cultura</label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input class="form-check-input" type="checkbox" id="scienceInterest">
+                          <label class="form-check-label" for="scienceInterest">Ciencia</label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input class="form-check-input" type="checkbox" id="businessInterest">
+                          <label class="form-check-label" for="businessInterest">Negocios</label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input class="form-check-input" type="checkbox" id="healthInterest">
+                          <label class="form-check-label" for="healthInterest">Salud</label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input class="form-check-input" type="checkbox" id="educationInterest" checked>
+                          <label class="form-check-label" for="educationInterest">Educación</label>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Guardar intereses</button>
+                    </form>
+                  </div>
+                </div>
+                
+                <div class="card">
+                  <div class="card-header bg-white">
+                    <h5 class="mb-0">Sesión</h5>
+                  </div>
+                  <div class="card-body">
+                    <p>¿Tienes problemas con tu cuenta?</p>
+                    <div class="d-grid gap-2">
+                      <button class="btn btn-outline-secondary" id="clearDataBtn">Limpiar datos locales</button>
+                      <button class="btn btn-outline-danger" id="deleteAccountBtn">Eliminar cuenta</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Create/Edit Event Modal -->
+  <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventModalLabel">Crear nuevo evento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="eventForm">
+            <div class="mb-3">
+              <label for="eventTitle" class="form-label">Título del evento</label>
+              <input type="text" class="form-control" id="eventTitle" required>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="eventDate" class="form-label">Fecha</label>
+                <input type="date" class="form-control" id="eventDate" required>
+              </div>
+              <div class="col-md-3">
+                <label for="eventStartTime" class="form-label">Hora inicio</label>
+                <input type="time" class="form-control" id="eventStartTime" required>
+              </div>
+              <div class="col-md-3">
+                <label for="eventEndTime" class="form-label">Hora fin</label>
+                <input type="time" class="form-control" id="eventEndTime" required>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="eventCategory" class="form-label">Categoría</label>
+                <select class="form-select" id="eventCategory" required>
+                  <option value="" selected disabled>Seleccionar categoría</option>
+                  <option value="tech">Tecnología</option>
+                  <option value="art">Arte y Cultura</option>
+                  <option value="science">Ciencia</option>
+                  <option value="business">Negocios</option>
+                  <option value="health">Salud</option>
+                  <option value="education">Educación</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="eventLocation" class="form-label">Ubicación</label>
+                <input type="text" class="form-control" id="eventLocation" required>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="eventCapacity" class="form-label">Capacidad (participantes)</label>
+                <input type="number" class="form-control" id="eventCapacity" min="1" required>
+              </div>
+              <div class="col-md-6">
+                <label for="eventImage" class="form-label">Imagen del evento</label>
+                <input type="file" class="form-control" id="eventImage" accept="image/*">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="eventDescription" class="form-label">Descripción</label>
+              <textarea class="form-control" id="eventDescription" rows="5" required></textarea>
+            </div>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="eventCertificate">
+              <label class="form-check-label" for="eventCertificate">
+                Otorgar certificado de asistencia
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>  
+          <button type="button" class="btn btn-primary" id="saveEventBtn">Guardar evento</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Event Details Modal -->
+  <div class="modal fade" id="eventDetailsModal" tabindex="-1" aria-labelledby="eventDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventDetailsModalLabel">Detalles del evento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="text-center mb-4">
+            <img src="https://cdn.pixabay.com/photo/2016/11/23/14/29/coding-1853305_1280.jpg" id="detailsEventImage" class="img-fluid rounded" alt="Evento" style="max-height: 300px;">
+          </div>
+          <h3 id="detailsEventTitle">Título del evento</h3>
+          <div class="d-flex align-items-center mb-3">
+            <span class="badge bg-primary me-2" id="detailsEventCategory">Categoría</span>
+            <span class="text-muted"><i class="far fa-calendar-alt me-1"></i> <span id="detailsEventDate">Fecha</span></span>
+          </div>
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <p><i class="far fa-clock me-1"></i> <span id="detailsEventTime">Hora</span></p>
+            </div>
+            <div class="col-md-6">
+              <p><i class="fas fa-map-marker-alt me-1"></i> <span id="detailsEventLocation">Ubicación</span></p>
+            </div>
+          </div>
+          <div class="mb-4">
+            <h5>Descripción</h5>
+            <p id="detailsEventDescription">Descripción del evento</p>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <div class="card bg-light">
+                <div class="card-body">
+                  <h6>Organizador</h6>
+                  <p class="mb-0" id="detailsEventOrganizer">Nombre del organizador</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card bg-light">
+                <div class="card-body">
+                  <h6>Capacidad</h6>
+                  <p class="mb-0"><span id="detailsEventRegistered">0</span>/<span id="detailsEventCapacity">50</span> participantes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="registerEventBtn">Inscribirse</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Delete Account Confirmation Modal -->
+  <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteAccountModalLabel">Confirmar eliminación de cuenta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>¡Atención!</strong> Esta acción no se puede deshacer.
+          </div>
+          <p>Al eliminar tu cuenta se perderán todos tus datos, incluyendo:</p>
+          <ul>
+            <li>Tu historial de eventos</li>
+            <li>Certificados obtenidos</li>
+            <li>Eventos organizados</li>
+            <li>Información del perfil</li>
+          </ul>
+          <div class="mb-3">
+            <label for="deleteConfirmation" class="form-label">Para confirmar, escribe "ELIMINAR" en el campo:</label>
+            <input type="text" class="form-control" id="deleteConfirmation" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmDeleteBtn" disabled>Eliminar cuenta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
