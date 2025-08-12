@@ -1,0 +1,31 @@
+:root{
+    --color-background: rgb(255, 251, 222);
+    --color-card-shadow: rgba(0,0,0,0.05);
+    --color-primary-hover: rgb(18, 153, 144);
+}
+  
+    
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, rgb(180, 248, 241),rgb(109, 223, 215), rgb(18, 153, 144));
+      color: var(--dark-color);
+      color: var(--color-primary-hover);
+    }
+
+     .login-container {
+      height: 100vh;
+    }
+    
+     .login-box {
+      border-radius: 10px;
+      background-color: var(--color-background);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+        .login-section {
+      display: block;
+    }

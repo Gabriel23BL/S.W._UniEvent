@@ -1,0 +1,84 @@
+:root{
+    --color-background: rgb(255, 251, 222);
+    --color-card-shadow: rgba(0,0,0,0.05);
+    --color-primary-hover: rgb(18, 153, 144);
+    --primary-color: rgb(18, 153, 144);
+}
+    
+  
+  body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, rgb(180, 248, 241),rgb(109, 223, 215), rgb(18, 153, 144));
+      color: var(--color-primary-hover);
+    }   
+   
+   .register-container {
+    padding: 20px;
+    max-width: 500px;
+    background-color: var(--color-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+      
+   }
+    /* Register progress steps */
+    .steps-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    .step-item {
+      text-align: center;
+      z-index: 1;
+    }
+    
+    .step-item .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #e9ecef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      color: #495057;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .step-item.active .step-circle {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .step-item.completed .step-circle {
+      background-color: #28a745;
+      color: white;
+    }
+    
+    .step-item p {
+      color: #6c757d;
+      font-size: 14px;
+    }
+    
+    .step-item.active p {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    
+    .step-line {
+      position: absolute;
+      height: 2px;
+      background-color: #e9ecef;
+      top: 20px;
+      width: 100%;
+      left: 0;
+      z-index: 0;
+    }

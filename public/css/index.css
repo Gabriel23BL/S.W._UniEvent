@@ -7,7 +7,7 @@
       --color-card-bg: rgb(144, 209, 202);
       --color-card-shadow: rgba(0,0,0,0.05);
       --radius: 0.75rem;
-      --font-family-heading: 'Poppins', sans-serif;
+      --font-family-heading: 'Arial', sans-serif;
       --transition-speed: 0.3s;
       --max-container-width: 1200px;
     }
@@ -18,7 +18,7 @@
     }
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Arial', sans-serif;
       background-color: var(--color-background);
       color: var(--color-text-primary);
       line-height: 1.6;
