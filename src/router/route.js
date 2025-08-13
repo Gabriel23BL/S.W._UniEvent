@@ -21,4 +21,9 @@ rutas.get("/sisten", (req, res) => {
   res.render("sisten", { titulo: "Crear usuario" });
 });
 
+rutas.get("/recuperar-clave", (req, res) => {
+  res.render("recuperarClave", { titulo: "Recuperar clave" });
+});
+  
+
 rutas.post("/api/registro-usuario", ControladorUsuario.crearUsuario);
