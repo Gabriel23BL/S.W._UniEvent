@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Estadísticas - UniEvent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/sisten.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <section class="app-section" id="mainSection">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-2 col-md-3 px-0">
+          <div class="sidebar d-flex flex-column">
+            <div class="sidebar-logo">
+              <h3 class="text-white mb-0">UniEvent</h3>
+            </div>
+            <ul class="nav flex-column mt-3">
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i> Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-calendar-week"></i> Calendario</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-star"></i> Mis eventos</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-chart-bar"></i> Estadísticas</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user"></i> Mi perfil</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+            </ul>
+            <div class="sidebar-footer mt-auto">
+              <a href="#" class="btn btn-outline-light btn-sm w-100"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-10 col-md-9 p-4">
+          <div class="section-content" id="statsSection">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2>Estadísticas de eventos</h2>
+              <div>
+                <span class="badge bg-primary">Organizador</span>
+                <a href="#" class="ms-2">Gabriel</a>
+              </div>
+            </div>
+
+            <!-- Métricas resumen -->
+            <div class="row mb-4">
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="dashboard-stat d-flex align-items-center">
+                  <i class="fas fa-calendar-check"></i>
+                  <div>
+                    <h3>12</h3>
+                    <p>Eventos creados</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="dashboard-stat d-flex align-items-center">
+                  <i class="fas fa-users"></i>
+                  <div>
+                    <h3>245</h3>
+                    <p>Total inscritos</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="dashboard-stat d-flex align-items-center">
+                  <i class="fas fa-chart-line"></i>
+                  <div>
+                    <h3>87%</h3>
+                    <p>Tasa asistencia</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="dashboard-stat d-flex align-items-center">
+                  <i class="fas fa-star"></i>
+                  <div>
+                    <h3>4.7</h3>
+                    <p>Puntuación promedio</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gráficos -->
+            <div class="row mb-4">
+              <div class="col-lg-8 mb-4">
+                <div class="card h-100">
+                  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Participación por evento</h5>
+                    <div class="btn-group btn-group-sm">
+                      <button class="btn btn-outline-secondary active">Mes</button>
+                      <button class="btn btn-outline-secondary">Trimestre</button>
+                      <button class="btn btn-outline-secondary">Año</button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="participationChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                  <div class="card-header bg-white">
+                    <h5 class="mb-0">Distribución por categoría</h5>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="categoryChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabla de desempeño -->
+            <div class="card">
+              <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Desempeño de eventos recientes</h5>
+                <div>
+                  <button class="btn btn-sm btn-outline-primary"><i class="fas fa-file-csv me-1"></i> Exportar CSV</button>
+                  <button class="btn btn-sm btn-outline-danger"><i class="fas fa-file-pdf me-1"></i> Exportar PDF</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Título evento</th>
+                        <th>Fecha</th>
+                        <th>Inscritos</th>
+                        <th>Asistencia</th>
+                        <th>Calificación</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Taller de Programación Web</td>
+                        <td>15 Jun, 2025</td>
+                        <td>15/30 (50%)</td>
+                        <td>12/15 (80%)</td>
+                        <td>4.8 ★</td>
+                      </tr>
+                      <tr>
+                        <td>Conferencia: Inteligencia Artificial</td>
+                        <td>18 Jun, 2025</td>
+                        <td>42/100 (42%)</td>
+                        <td>38/42 (90%)</td>
+                        <td>4.5 ★</td>
+                      </tr>
+                      <tr>
+                        <td>Workshop de Desarrollo Mobile</td>
+                        <td>5 May, 2025</td>
+                        <td>25/25 (100%)</td>
+                        <td>22/25 (88%)</td>
+                        <td>4.9 ★</td>
+                      </tr>
+                      <tr>
+                        <td>Charla: Blockchain y Criptomonedas</td>
+                        <td>12 Abr, 2025</td>
+                        <td>35/50 (70%)</td>
+                        <td>30/35 (86%)</td>
+                        <td>4.6 ★</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- Fin statsSection -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Aquí puedes agregar scripts para los gráficos -->
+</body>
+</html>
