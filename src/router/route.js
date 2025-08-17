@@ -65,5 +65,9 @@ rutas.get("/sisten-configuracion", (req, res) => {
   res.render("sistenComfiguracion");
 }); 
 
+/* Vista Mis Certificados*/
+rutas.get("/sisten-mis-certificados", (req, res) => {  
+  res.render("sistenMisCertificados");
+}); 
 
 rutas.post("/api/registro-usuario", ControladorUsuario.crearUsuario);
