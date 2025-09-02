@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle del evento - UniEvent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/sisten.css">
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            uni: 'rgb(255, 251, 222)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body class="bg-uni min-h-screen text-gray-800">
+
+                  <!-- Sidebar -->
+        <div class="col-lg-2 col-md-3 px-0">
+          <div class="sidebar d-flex flex-column">
+            <div class="sidebar-logo">
+              <div class="flex items-center gap-0 mb-1">
+                <img src="../img/logo.png" alt="Logo UniEvent" class="w-12 h-12">
+                <h3 class="text-white text-xl font-bold">UniEvent</h3>
+              </div>
+            </div>
+            
+            <ul class="nav flex-column mt-3">
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-home"></i> Inicio</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-chart-bar"></i> Estadísticas</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user"></i>Mi perfil</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-star"></i> Mis eventos</a></li>
+              <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-certificate"></i>Mis certificados</a></li>
+            </ul>
+            <div class="sidebar-footer mt-auto">
+              <a href="/" class="btn btn-outline-light btn-sm w-100"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            </div>
+          </div>
+        </div>
+
+  <!-- Mobile navbar -->
+  <div class="lg:hidden bg-gray-800 text-white px-4 py-3 flex justify-between items-center">
+    <h3 class="text-xl font-bold">UniEvent</h3>
+    <button id="menuToggle" class="text-white text-2xl"><i class="fas fa-bars"></i></button>
+  </div>
+
+  <!-- Sidebar (mobile) -->
+  <div id="mobileMenu" class="hidden lg:hidden bg-gray-800 text-white p-4">
+    <ul class="space-y-2">
+      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-700"><i class="fas fa-home mr-2"></i>Inicio</a></li>
+      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-700"><i class="fas fa-calendar-alt mr-2"></i>Eventos</a></li>
+      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-700"><i class="fas fa-calendar-week mr-2"></i>Calendario</a></li>
+      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-700"><i class="fas fa-star mr-2"></i>Mis eventos</a></li>
+      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-700"><i class="fas fa-chart-bar mr-2"></i>Estadísticas</a></li>
+      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Mi perfil</a></li>
+      <li><a href="#" class="block px-4 py-2 rounded hover:bg-gray-700"><i class="fas fa-certificate mr-2"></i>Mis certificados</a></li>
+      <li><a href="#" class="block px-4 py-2 rounded bg-red-600 hover:bg-red-700 text-center"><i class="fas fa-sign-out-alt mr-2"></i>Cerrar sesión</a></li>
+    </ul>
+  </div>
+
+  <!-- Main content -->
+  <main class="lg:ml-64 p-4">
+  <div class="flex justify-between items-center mb-6">
+  <h2 class="text-2xl font-bold">Detalle del evento</h2>
+  <div class="flex items-center gap-2">
+    <span class="bg-blue-600 text-white px-3 py-1 rounded text-sm">Estudiante</span>
+    <span class="text-gray-800">Gabriel</span>
+  </div>
+</div>
+
+
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Evento -->
+      <div class="bg-white p-6 rounded shadow">
+        <img src="../img/full stack.jpg" class="rounded mb-4 w-full h-64 object-cover" alt="Evento">
+        <h3 class="text-xl font-semibold mb-2">Desarrollo Full-Stack 2025</h3>
+        <p class="text-gray-700 mb-4">48 horas de programación intensiva para desarrollar sistemas web.</p>
+        <div class="flex items-center gap-4">
+          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="w-16 h-16 rounded-full object-cover" alt="Docente">
+          <div>
+            <p class="font-semibold">Prof. Analis Brito</p>
+            <p class="text-sm text-gray-500">Especialista en desarrollo web</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compra -->
+      <div class="bg-white p-6 rounded shadow">
+        <h4 class="text-lg font-semibold mb-4">Inscripción y pago</h4>
+        <p class="text-gray-700 mb-2">Precio del evento:</p>
+        <p class="text-2xl font-bold text-green-600 mb-4">$25 USD</p>
+        <p class="text-gray-700 mb-2">Métodos de pago disponibles:</p>
+        <ul class="space-y-2 text-gray-700 mb-4">
+          <li><i class="fas fa-mobile-alt text-blue-600 mr-2"></i>Pago móvil</li>
+          <li><i class="fas fa-university text-green-600 mr-2"></i>Transferencia bancaria</li>
+          <li><i class="fab fa-btc text-yellow-500 mr-2"></i>Binance</li>
+          <li><i class="fab fa-paypal text-indigo-600 mr-2"></i>PayPal</li>
+        </ul>
+
+        <button id="openModal" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Realizar compra</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-6 rounded shadow w-full max-w-xl relative">
+      <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl">&times;</button>
+      <h3 class="text-xl font-semibold mb-4">Selecciona método de pago</h3>
+      <select id="paymentMethod" class="w-full mb-4 p-2 border rounded">
+        <option value="">-- Seleccionar --</option>
+        <option value="movil">Pago móvil</option>
+        <option value="transferencia">Transferencia bancaria</option>
+        <option value="binance">Binance</option>
+        <option value="paypal">PayPal</option>
+      </select>
+      <div id="paymentDetails" class="mb-4 text-sm text-gray-700"></div>
+      <label class="block mb-2 font-medium">Referencia de pago</label>
+      <input type="text" class="w-full mb-4 p-2 border rounded" placeholder="Ej: 1234567890">
+      <label class="block mb-2 font-medium">Captura de factura</label>
+      <input type="file" class="w-full mb-4 p-2 border rounded">
+            <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition w-full">Confirmar compra</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const modal = document.getElementById('paymentModal');
+    const openBtn = document.getElementById('openModal');
+    const closeBtn = document.getElementById('closeModal');
+    const methodSelect = document.getElementById('paymentMethod');
+    const details = document.getElementById('paymentDetails');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+    closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+    methodSelect.addEventListener('change', () => {
+      const method = methodSelect.value;
+      let info = '';
+      switch (method) {
+        case 'movil':
+          info = 'Banco de Venezuela<br>Teléfono: 0424-354-0261<br>CI/RIF: V-28051690';
+          break;
+        case 'transferencia':
+          info = 'Banco Mercantil<br>Cuenta: 0105-1234-5678-9012<br>CI/RIF: J-28051690';
+          break;
+        case 'binance':
+          info = 'Wallet: unievent123<br>Red: BEP20';
+          break;
+        case 'paypal':
+          info = 'Correo: pagos@uni-event.com';
+          break;
+        default:
+          info = '';
+      }
+      details.innerHTML = info;
+    });
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

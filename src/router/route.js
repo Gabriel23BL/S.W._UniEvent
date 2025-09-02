@@ -25,10 +25,6 @@ rutas.get("/recuperar-clave", (req, res) => {
   res.render("recuperarClave", { titulo: "Recuperar clave" });
 });
 
-/*Vistas de Sistema*/
-rutas.get("/sisten", (req, res) => {  
-  res.render("sisten", { titulo: "Vista" });
-});  
 
 /* Vista Inicio*/
 rutas.get("/sisten-inicio", (req, res) => {  
@@ -40,10 +36,16 @@ rutas.get("/sisten-eventos", (req, res) => {
   res.render("sistenEventos");
 });
 
-/* Vista Inicio*/
-rutas.get("/sisten-calendario", (req, res) => {  
-  res.render("sistenCalendario");
+/* vista comprar Eventos */
+rutas.get("/sisten-comprar-eventos", (req, res) => {  
+  res.render("sistenEventoCompra");
 });
+
+/* Vista CRUD Eventos*/
+rutas.get("/sisten-crud-eventos", (req, res) => {   
+  res.render("sistenEventCrud");
+}); 
+
 
 /* Vista mis eventos*/
 rutas.get("/sisten-mis-eventos", (req, res) => {  
@@ -60,10 +62,6 @@ rutas.get("/sisten-mi-perfil", (req, res) => {
   res.render("sistenMiPerfil");
 });
 
-/* Vista Configuracion*/
-rutas.get("/sisten-configuracion", (req, res) => {  
-  res.render("sistenComfiguracion");
-}); 
 
 /* Vista Mis Certificados*/
 rutas.get("/sisten-mis-certificados", (req, res) => {  

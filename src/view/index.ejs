@@ -1,154 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UniEvent</title>
-  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/index.css" />
 </head>
 
 <body>
   <header>
     <div class="container" role="banner">
       <nav aria-label="Navegación principal">
-        <div class="logo" tabindex="0">UniEvent</div>
+        <div class="logo flex items-center gap-2" tabindex="0">
+          <img src="../img/logo-nombe.png" alt="Logo de UniEvent" class="w-13 h-13 object-contain" />
+
+        </div>
+
         <button class="hamburger" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-navigation" id="hamburger-btn">
           <div></div>
           <div></div>
           <div></div>
         </button>
-        <!-- Desktop nav (hidden on mobiles) -->
+
         <div class="nav-links" id="desktop-navigation">
           <a href="#cursos" tabindex="0">Cursos</a>
           <a href="#eventos" tabindex="0">Eventos</a>
           <a href="/registro-usuario" tabindex="0">Registrate</a>
-          <a href="/login" tabindex="0">Inicia Sesion</a>
-          
+          <a href="/login" tabindex="0">Inicia Sesión</a>
         </div>
-        <!-- Mobile nav menu (shown on mobiles when hamburger toggled) -->
+
         <div class="nav-links mobile" id="mobile-navigation" role="menu" aria-label="Menú de navegación móvil">
           <a href="#cursos" role="menuitem" tabindex="-1">Cursos</a>
           <a href="#eventos" role="menuitem" tabindex="-1">Eventos</a>
-          <a href="/formularios" role="menuiten" tabindex="-1">Registrate</a>
-          <a href="#contacto" role="menuitem" tabindex="-1">Inicia Sesion</a>
-          
+          <a href="/registro-usuario" role="menuitem" tabindex="-1">Registrate</a>
+          <a href="/login" role="menuitem" tabindex="-1">Inicia Sesión</a>
         </div>
       </nav>
     </div>
   </header>
+
   <main>
-
-    <section 
-    class="hero" 
-    aria-label="Sección principal"
-    >
-
+    <section class="hero" aria-label="Sección principal">
       <div class="container">
         <h1>UniEvent: Tu Portal de Cursos y Eventos Académicos</h1>
         <p>Descubre y participa en los mejores cursos y actividades académicas disponibles. Mantente al día con los eventos que impulsan tu formación y crecimiento profesional.</p>
-        <button 
-        class="btn-hero" id="explorar-cursos" aria-label="Explorar Cursos">Explorar Cursos</button>
+        <button class="btn-hero" id="explorar-cursos" aria-label="Explorar Cursos">Explorar Cursos</button>
       </div>
-
     </section>
 
-    <section 
-    id="cursos" 
-    aria-labelledby="tit-cursos" 
-    class="container"
-    >
-
+    <section id="cursos" aria-labelledby="tit-cursos" class="container">
       <h2 id="tit-cursos">Cursos Disponibles</h2>
-
-      <div 
-      class="cards-grid" 
-      role="list" 
-      aria-label="Lista de cursos disponibles"
-      >
-
-        <article 
-        class="card" 
-        role="listitem" 
-        tabindex="0" 
-        aria-label="Curso de Introducción a la Programación"
-        >
+      <div class="cards-grid" role="list" aria-label="Lista de cursos disponibles">
+        <article class="card" role="listitem" tabindex="0" aria-label="Curso de Introducción a la Programación">
           <img src="https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_1280.jpg" alt="Computadora portátil con código Python en pantalla" loading="lazy" />
           <h3>Introducción a la Programación</h3>
           <a href="reservas.html"><p>Aprende los fundamentos de la programación utilizando Python y desarrolla tus primeras aplicaciones.</p></a>
           <div class="date">Inicio: 1 de Julio, 2024</div>
         </article>
 
-        <article 
-        class="card" 
-        role="listitem" 
-        tabindex="0" 
-        aria-label="Curso de Matemáticas para Ciencias Sociales"
-        >
+        <article class="card" role="listitem" tabindex="0" aria-label="Curso de Matemáticas para Ciencias Sociales">
           <img src="https://cdn.pixabay.com/photo/2015/11/15/07/47/geometry-1044090_1280.jpg" alt="Gráficos y fórmulas matemáticas sobre papel" loading="lazy" />
           <h3>Matemáticas</h3>
           <p>Optimiza tus habilidades cuantitativas aplicadas en economía, sociología y estadística.</p>
           <div class="date">Inicio: 15 de Julio, 2024</div>
         </article>
 
-        <article 
-        class="card" 
-        role="listitem" 
-        tabindex="0" 
-        aria-label="Curso de Redacción Académica"
-        >
+        <article class="card" role="listitem" tabindex="0" aria-label="Curso de Redacción Académica">
           <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="Persona escribiendo en cuaderno con bolígrafo" loading="lazy" />
           <h3>Redacción Académica</h3>
           <p>Mejora tus técnicas de escritura y comunicación para trabajos y tesis universitarias.</p>
           <div class="date">Inicio: 20 de Julio, 2024</div>
         </article>
-
       </div>
     </section>
 
-    <section 
-    id="eventos" 
-    aria-labelledby="tit-eventos" 
-    class="container"
-    >
-
+    <section id="eventos" aria-labelledby="tit-eventos" class="container">
       <h2 id="tit-eventos">Próximos Eventos Académicos</h2>
-
-      <div 
-      class="cards-grid" 
-      role="list" 
-      aria-label="Lista de próximos eventos académicos"
-      >
-
-        <article 
-        class="card" 
-        role="listitem" 
-        tabindex="0" 
-        aria-label="Conferencia sobre inteligencia artificial"
-        >
+      <div class="cards-grid" role="list" aria-label="Lista de próximos eventos académicos">
+        <article class="card" role="listitem" tabindex="0" aria-label="Conferencia sobre inteligencia artificial">
           <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Robots y tecnología de inteligencia artificial" loading="lazy" />
           <h3>Conferencia sobre Inteligencia Artificial</h3>
           <p>Descubre las últimas tendencias y aplicaciones de la inteligencia artificial en la educación y la industria.</p>
           <div class="date">Fecha: 5 de Agosto, 2024 - 10:00 AM</div>
         </article>
 
-        <article 
-        class="card" 
-        role="listitem" 
-        tabindex="0" 
-        aria-label="Taller de análisis de datos"
-        >
+        <article class="card" role="listitem" tabindex="0" aria-label="Taller de análisis de datos">
           <img src="https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=600&q=80" alt="Gráficos de datos en pantalla" loading="lazy" />
           <h3>Taller de Análisis de Datos</h3>
           <p>Aprende a manejar herramientas de análisis estadístico y visualización de datos.</p>
           <div class="date">Fecha: 12 de Agosto, 2024 - 2:00 PM</div>
         </article>
-        
-        <article 
-        class="card" 
-        role="listitem" 
-        tabindex="0" 
-        aria-label="Seminario de educación inclusiva"
-        >
+
+        <article class="card" role="listitem" tabindex="0" aria-label="Seminario de educación inclusiva">
           <img src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?auto=format&fit=crop&w=600&q=80" alt="Grupo diverso conversando en seminario" loading="lazy" />
           <h3>Seminario de Educación Inclusiva</h3>
           <p>Explora estrategias para fomentar la inclusión y diversidad en el ámbito académico.</p>
@@ -156,12 +99,11 @@
         </article>
       </div>
     </section>
-    <br>
   </main>
 
   <footer>
     &copy; 2025 UniEvent. Todos los derechos reservados.
   </footer>
-  <script type="module" public="index.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
 </html>

@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UniEvent-Registro</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/css/registroUsuario.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UniEvent - Registro</title>
+
+  <!-- Bootstrap y FontAwesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="/css/registroUsuario.css" />
   <script src="/js/registroUsuario.js" defer></script>
 </head>
+
 <body>
-    <section class="app-section register-section">
-    <div class="register-container d-flex align-items-center">
+  <section class="app-section register-section">
+    <div class="register-container d-flex align-items-center justify-content-center">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="register-box">
-              <div class="text-center mb-4">
-                <h1 class="h3 mb-3 fw-bold">UniEvent</h1>
+              <!-- Logo + Título -->
+              <div class="text-center mb-4 d-flex flex-column align-items-center">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <img src="../img/logo.png" alt="Logo de UniEvent" class="rounded-circle shadow-sm" style="width: 48px; height: 48px; object-fit: contain;" />
+                  <h1 class="h4 fw-bold m-0">UniEvent</h1>
+                </div>
                 <p class="text-muted">Registro de usuario</p>
               </div>
 
@@ -38,20 +47,21 @@
                 </div>
               </div>
 
+              <!-- Formulario -->
               <form id="registerForm">
                 <!-- Paso 1 -->
                 <div id="step1" class="register-step">
                   <div class="mb-3">
                     <label for="registerEmail" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" id="registerEmail" placeholder="ejemplo@ejemplo.com" required>
+                    <input type="email" class="form-control" id="registerEmail" placeholder="ejemplo@ejemplo.com" required />
                   </div>
                   <div class="mb-3">
                     <label for="registerPassword" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="registerPassword" placeholder="**********" required>
+                    <input type="password" class="form-control" id="registerPassword" placeholder="**********" required />
                   </div>
                   <div class="mb-3">
                     <label for="registerConfirmPassword" class="form-label">Confirmar contraseña</label>
-                    <input type="password" class="form-control" id="registerConfirmPassword" placeholder="**********" required>
+                    <input type="password" class="form-control" id="registerConfirmPassword" placeholder="**********" required />
                   </div>
                   <div class="d-grid gap-2">
                     <button type="button" class="btn btn-primary" id="step1Next">Siguiente</button>
@@ -59,14 +69,14 @@
                 </div>
 
                 <!-- Paso 2 -->
-                <div id="step2" class="register-step" style="display:none">
+                <div id="step2" class="register-step" style="display: none;">
                   <div class="mb-3">
                     <label for="registerName" class="form-label">Nombre completo</label>
-                    <input type="text" class="form-control" id="registerName" placeholder="Gabriel Bolivar" required>
+                    <input type="text" class="form-control" id="registerName" placeholder="Gabriel Bolívar" required />
                   </div>
                   <div class="mb-3">
-                    <label for="registerName" class="form-label">Nro de Cedula</label>
-                    <input type="number" class="form-control" id="registerName" placeholder="V-28051690" required>
+                    <label for="registerID" class="form-label">Nro de Cédula</label>
+                    <input type="text" class="form-control" id="registerID" placeholder="V-28051690" required />
                   </div>
                   <div class="mb-3">
                     <label for="registerRole" class="form-label">Rol</label>
@@ -85,7 +95,7 @@
                 </div>
 
                 <!-- Paso 3 -->
-                <div id="step3" class="register-step" style="display:none">
+                <div id="step3" class="register-step" style="display: none;">
                   <div class="alert alert-info">
                     <p class="mb-0">Por favor revisa tus datos antes de finalizar el registro:</p>
                   </div>
@@ -95,7 +105,7 @@
                     <p><strong>Rol:</strong> <span id="summaryRole"></span></p>
                   </div>
                   <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                    <input type="checkbox" class="form-check-input" id="termsCheck" required />
                     <label class="form-check-label" for="termsCheck">Acepto los términos y condiciones</label>
                   </div>
                   <div class="d-flex justify-content-between">
@@ -111,6 +121,8 @@
       </div>
     </div>
   </section>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,31 +1,138 @@
-:root{
-    --color-background: rgb(255, 251, 222);
-    --color-card-shadow: rgba(0,0,0,0.05);
-    --color-primary-hover: rgb(18, 153, 144);
+:root {
+  --color-background: rgb(255, 251, 222);
+  --color-card-shadow: rgba(0, 0, 0, 0.05);
+  --color-primary: rgb(9, 107, 104);
+  --color-primary-hover: rgb(18, 153, 144);
+  --color-text-muted: #6b7280;
+  --radius: 0.75rem;
+  --transition-speed: 0.3s;
 }
-  
-    
-    
-    body {
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, rgb(180, 248, 241),rgb(109, 223, 215), rgb(18, 153, 144));
-      color: var(--dark-color);
-      color: var(--color-primary-hover);
-    }
 
-     .login-container {
-      height: 100vh;
-    }
-    
-     .login-box {
-      border-radius: 10px;
-      background-color: var(--color-background);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      padding: 2rem;
-      max-width: 500px;
-      margin: 0 auto;
-    }
+/* Fondo general */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, rgb(180, 248, 241), rgb(109, 223, 215), rgb(18, 153, 144));
+  color: var(--color-primary-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 
-        .login-section {
-      display: block;
-    }
+/* Contenedor principal */
+.login-section {
+  display: block;
+  width: 100%;
+}
+
+.login-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Caja del formulario */
+.login-box {
+        border-radius: 10px;
+        background-color: var(--color-background);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 400px;
+        margin: 0 auto;
+}
+
+/* Encabezado con logo */
+.login-box .text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
+}
+
+.login-box h1 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.login-box p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* Formulario */
+form label {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+form input[type="email"],
+form input[type="password"] {
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed);
+}
+
+form input:focus {
+  border-color: var(--color-primary-hover);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(18, 153, 144, 0.2);
+}
+
+/* Botón */
+.btn-primary {
+  background-color: var(--color-primary);
+  border: none;
+  padding: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-primary-hover);
+  transform: scale(1.03);
+  outline: none;
+}
+
+/* Enlace de recuperación */
+.text-center a {
+  color: var(--color-primary-hover);
+  font-size: 0.85rem;
+}
+
+.text-center a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .login-box {
+    padding: 1.5rem;
+  }
+
+  .login-box h1 {
+    font-size: 1.5rem;
+  }
+
+  .login-box img {
+    width: 40px;
+    height: 40px;
+  }
+}
